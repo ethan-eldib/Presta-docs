@@ -2,12 +2,24 @@
 
 {% block body %}
 	<div class="jumbotron text-center">
-		<h1 class="display-4">Bienvenue sur Presta-Doc</h1>
-		<p class="lead">Je vous propose mes services pour vous aider dans vos démarche administrative</p>
-		<hr class="my-4">
-		<p>Vous êtes un particulier, une entreprise ? Je m'occupe de tout !</p>
-		<p class="lead">
-			<a class="btn btn-primary btn-lg" href="#" role="button">Me contacter</a>
-		</p>
+
+		<div id="backgroung-color-text-content">
+
+			<h1 class="display-4">Bienvenue sur Presta-Doc</h1>
+			<p class="lead">Vous êtes un chef d’entreprise ou un entrepreneur débordé ? Confiez-moi vos tâches administratives !</p>
+			<hr class="my-4">
+			<h2>Qui suis je ?</h2>
+			<p class="lead mx-auto lead-content">De formation superieur en comptabilité, gestion et ressources humaines, depuis maintenant plus de dix ans, j’ai occupé de nombreux postes en tant que comptable et gestionnaire administratrif dans des entreprises de toute taille et des secteurs d’activité diversifié.</p>
+			<p class="lead mx-auto lead-content">Je propose mon expertise en tant qu'indépendante et je suis là pour vous aidez !</p>
+			<p class="lead">
+				<a class="btn btn-lg my-3" id="btn-homepage-contact" href="{{ path('contact') }}" role="button">Me contacter</a>
+			</p>
+		</div>
 	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	<script>
+		$(console.log('test'));
+	</script>
 {% endblock %}

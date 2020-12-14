@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des dossiers
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Liste des dossiers</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>N° du dossier</th>
+					<th>Nom du dossier</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for folder in folders %}
+					<tr>
+						<td>{{ folder.id }}</td>
+						<td>{{ folder.title }}</td>
+						<td>
+							<a href="{{ path('folders_show', {'id': folder.id}) }}">Voir</a>
+							<a href="{{ path('folders_edit', {'id': folder.id}) }}">Modifier</a>
+                            {% include "folders/_delete_form.html.twig" %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">Aucun dossier</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('folders_new') }}">Nouveau dossier</a>
+	</div>
+{% endblock %}
+

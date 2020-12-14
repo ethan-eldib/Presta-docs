@@ -1,0 +1,44 @@
+<div class="container">
+	
+	{{ form_start(form) }}
+
+	<div class="file-drop-area">
+		{{ form_row(form.title) }}
+		<div class="content-drag">
+			<i class="fas fa-cloud-upload-alt" id="icon-uploads"></i>
+			<p id="content-description-drag">Faites glisser vos fichiers ici ou cliquez dans cette zone.</p>
+			
+		</div>
+		{{ form_row(form.folders) }}
+		
+		<button class="btn btn-primary" id="btn-folders-submit">{{ button_label|default('Déposer') }}</button>
+
+	</div>
+		<p id="show-files" class="text-center"></p>
+
+	{# Vérifier si la route est "folders_edit" on affiche les documents #}
+	{% if app.request.attributes.get('_route') == 'folders_edit' %}
+
+		<h2>Vos documents</h2>
+		{% for document in folder.documents %}
+			<div>
+				<embed src="{{ asset('/uploads/' ~ document.name) }}" type='application/pdf'>
+				<a href="{{ path('delete_document', {id: document.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ document.id) }}">Supprimer</a>
+				<a href="{{ asset('/uploads/' ~ document.name) }}">Visualiser</a>
+			</div>
+		{% endfor %}
+
+	{% endif %}
+	{{ form_end(form) }}
+</div>
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	<script>
+		$(document).ready(function() {
+			$('input[type="file"]').change(function(e) {
+				let numberFile = e.target.files.length;	
+				$('#show-files').text(`Vous avez sélectionné ${numberFile} fichier(s)`);		
+			});
+		});
+	</script>
+{% endblock %}

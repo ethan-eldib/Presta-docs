@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau dossier{% endblock %}
+
+
+{% block body %}
+<div class="container">
+
+    <h1 class="my-5 text-center">Déposez vos documents</h1>
+
+    {{ include('folders/_form.html.twig') }}
+
+    {# <a href="{{ path('folders_index') }}">Liste des dossiers</a> #}
+</div>
+{% endblock %}
+
+
