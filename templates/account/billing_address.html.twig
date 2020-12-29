@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes adresses de facturation
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5">
+		<div class="alert alert-info text-center">
+			<h1 class="alert-heading mb-3">Mes adresses de facturation.</h1>
+			<hr>
+			<p class="mb-0">Vous pouvez gérer ici vos adresses de facturation.</p>
+			<a href="{{ path('add_billing_address') }}">
+				<button class="btn-add-address float-right">Ajouter une adresse.</button>
+			</a>
+		</div>
+
+		{% if app.user.addresses|length == 0 %}
+			<div class="mt-5 alert alert-warning text-center">
+				<h3 class="alert-heading mb-3">Aucune adresse enregistrée</h3>
+				<hr>
+				<p class="mb-0">Vous n'avez pas encore ajouté d'adresse de facturation dans votre espace client.
+				</p>
+				<p class="mb-0">Pour en ajouter une, veuillez
+					<a href="{{ path('add_billing_address') }}">cliquer ici</a>.
+				</p>
+			</div>
+
+		{% else %}
+			<div class="row mt-5">
+				{% for address in app.user.addresses %}
+					<div class="col-md-4">
+						<div class="card" style="width: 18rem;">
+							<div class="card-body">
+								<h5 class="card-title">{{ address.name }}</h5>
+								<hr>
+								<p class="card-text">
+                                    {{ address.address }}, <br>
+                                    {{ address.postal }} - {{ address.city }} - {{ address.country }} <br>
+                                </p>
+								<a href="{{ path('edit_billing_address', { id: address.id }) }}">
+                                    <img class="icon-default-style" src="{{ asset('/images/icons/edit.png') }}" alt="Modifier son adresse">
+                                </a> | 
+                                <a href="{{ path('delete_billing_address', { id: address.id }) }}">
+                                    <img class="icon-default-style" src="{{ asset('/images/icons/trash.png') }}" alt="Supprimer son adresse">
+                                </a>
+							</div>
+						</div>
+				    </div>
+                {% endfor %}
+			</div>
+		{% endif %}
+		<p class="mt-5">Retournez sur votre
+			<a href="{{ path('my_account') }}">compte.</a>
+		</p>
+	</div>
+{% endblock %}

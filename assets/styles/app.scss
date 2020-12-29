@@ -189,6 +189,11 @@ body {
   }
 }
 
+// Account user
+.btn-add-address {
+  @include btn-app;
+}
+
 // Pack-card
 .block-pack {
   display: flex;
