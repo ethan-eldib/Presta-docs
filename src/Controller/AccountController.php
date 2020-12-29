@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\EditPasswordType;
 use App\Form\RegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,6 +23,9 @@ class AccountController extends AbstractController
     public function login() 
     {
         return $this->render('account/login.html.twig');
+
+        $this->redirectToRoute('my_account');
+
     }
 
     /**
@@ -67,6 +71,56 @@ class AccountController extends AbstractController
         }
 
         return $this->render('account/registration.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * Permet d'afficher la page d'accueil du compte utilisateur
+     *
+     * @Route("/mon-compte", name="my_account")
+     */
+    public function myAccount() 
+    {
+        return $this->render('account/my_account.html.twig');
+    }
+
+    /**
+     * Permet de modifier son mot de passe
+     *
+     * @Route("/mon-compte/modifier-mon-mot-de-passe", name="account_password")
+     */
+    public function editPassword(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $manager) 
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(EditPasswordType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $old_password = $form->get('old_password')->getData();
+
+            if ($encoder->isPasswordValid($user, $old_password)) {
+                $new_password = $form->get('new_password')->getData();
+                $password = $encoder->encodePassword($user, $new_password);
+
+                $user->setHash($password);
+                $manager->flush();
+
+                $this->addFlash(
+                    'success',
+                    'Votre mot de passe a bien éré mis à jour.'
+                );
+            }else {
+                $this->addFlash(
+                    'warning',
+                    'Le mot de passe actuel est incorrect.'
+                );
+            }
+        }
+
+        return $this->render('account/edit_password.html.twig', [
             'form' => $form->createView()
         ]);
     }

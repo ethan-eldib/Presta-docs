@@ -1,0 +1,38 @@
+@mixin card-app($bgColorHeader: black, $borderColorCircle: white, $borderColorCard: white) {
+
+    border: 2px solid $borderColorCard;
+
+    .pricing-header {
+        background-color: $bgColorHeader;
+        margin: -6px;
+        border-radius: 3px;
+        margin-bottom: 25px;
+    }
+
+    .price-circle {
+        border: 5px solid $borderColorCircle;
+        position: relative;
+        background: white;
+        bottom: -21px;
+        margin: 0 auto;
+        padding: 5px 5px;
+        width: 80px;
+        border-radius: 50%;
+        font-weight: bold;
+    }
+}
+
+
+@mixin btn-app($btnColor: $colorSecondary, $textColor: white) {
+    background-color: $btnColor;
+    color: $textColor;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+
+    &:hover {
+        background-color: lighten($btnColor, 6%);
+        transition: 0.4s ease-in-out;
+    }
+}

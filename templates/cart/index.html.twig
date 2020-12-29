@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="my-5 text-center">Mon panier</h1>
+		<p class="text-center">Retrouvez l'ensemble des packs que vous avez ajouté à votre panier.</p>
+		<hr>
+		{% include "/cart/_cart.html.twig" %}
+	</div>
+{% endblock %}
+

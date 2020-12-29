@@ -15,17 +15,10 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Simuler votre devis
-				</a>
-			</li>
-			<li class="nav-item">
 				<a class="nav-link" href="{{ path('pack_doc') }}">Packs presta-doc
 				</a>
 			</li>
-			{# <li class="nav-item">
-				<a class="nav-link" href="{{ path('booking_new') }}">Prendre un rendez-vous
-				</a>
-			</li> #}
+	
 			<li class="nav-item">
 				<a class="nav-link" href="{{ path('contact') }}">Contact
 				</a>
@@ -36,25 +29,26 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('account_logout') }}">Déconnexion</a>
 				</li>
+				<span class="navbar-divider-line">|</span>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('my_account') }}">Mon compte</a>
+				</li>
 			{% else %}
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('register') }}">Inscription</a> 
 				</li>
+				<span class="navbar-divider-line">|</span>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('account_login') }}">Connexion</a>
 				</li>
 			{% endif %}
+				<span class="navbar-divider-line">|</span>
 		</ul>
+		<a href="{{ path('cart') }}">
+			<img class="icon-default-style" src="{{ asset('images/icons/shopping-cart.png') }}" alt="Shopping cart icon from Flaticon">
+		</a>
 	</div>
 </nav>
 
 {# Message flash #}
-{% for label, messages in app.flashes %}
-	<div class="container">
-		<div class="alert alert-{{ label }}">
-			{% for message in messages %}
-				<p>{{ message|raw }}</p>
-			{% endfor %}
-		</div>
-	</div>
-{% endfor %}
+{% include "partials/_flash_message.html.twig" %}

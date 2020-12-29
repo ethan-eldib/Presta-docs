@@ -13,9 +13,7 @@ class HomeController extends AbstractController {
     public function home()
     {
         return $this->render(
-            'home.html.twig', [
-                'titre' => 'Bienvenue sur le site Presta-docs'
-            ]
+            'home.html.twig'
         );
     }
 }

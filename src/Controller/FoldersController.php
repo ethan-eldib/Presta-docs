@@ -37,7 +37,7 @@ class FoldersController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // On recupère les documents tranmis
+            // On recupère les documents transmis
             $documents = $form->get('folders')->getData();
 
             // On boucle sur les documents

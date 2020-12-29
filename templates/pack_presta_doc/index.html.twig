@@ -1,9 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Pack Presta-doc{% endblock %}
+{% block title %}Packs Presta-Doc
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>Pack document</h1>
-    </div>
+	<div class="container text-center my-5">
+		<h1 class="mb-5">Packs Presta-Doc</h1>
+		<div class="row block-pack">
+			{% for pack in packs %}
+				{% include "pack_presta_doc/_card_pack.html.twig" %}
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
+

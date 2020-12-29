@@ -1,8 +1,13 @@
 @import url('./bootstrap.min.css');
 @import "typo";
 @import "color";
+@import "icon_style";
+@import "mixins";
 
-//  Body
+/*
+* Body
+* Typo, color, fontFamily, fontSize
+*/
 body {
 
   h1,
@@ -14,7 +19,9 @@ body {
 
   p,
   label,
-  button {
+  button,
+  span,
+  small {
     font-family: $textPrimary;
     color: $textColorPrimary;
   }
@@ -26,43 +33,90 @@ body {
     color: $textColorPrimary;
     font-weight: 500;
 
-    &:hover{
+    &:hover {
       color: lighten($textColorPrimary, 10%);
     }
   }
+
+  .navbar-divider-line {
+    position: relative;
+    bottom: -7px;
+  }
 }
 
-// Jumbotron Home page
-.jumbotron {
-  background: url("/images/hero.jpg");
-  background-size: cover;
-  background-attachment: scroll;
-  background-position: center;
-  height: 90vh;
+// Hero video
+.hero-video {
 
-  .lead {
-    font-size: 1.7rem;
+  margin-top: 25px;
+
+  .overlay {
+    background: rgba(black, 0.5);
   }
 
-  .lead-content {
-    width: 90%;
+  video {
+    z-index: -1;
+    object-fit: cover;
+    width: 100vw;
+    height: 90vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: grayscale(0.7);
   }
 
-  #backgroung-color-text-content {
-    background-color: #d3d3d3cc;
-    width: 620px;
-    margin: 0 auto;
-    border-radius: 8px;
-  }
+  .main-title-hero {
+    position: relative;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  #btn-homepage-contact {
-    background-color: $colorSecondary;
-    color: white;
+    h1 {
+      color: black;
+      text-transform: uppercase;
+      letter-spacing: 3vw;
+      line-height: 1.2;
+      font-size: 3vw;
+      text-align: center;
 
-    &:hover {
-      background-color: lighten($colorSecondary, 10%);
+      span {
+        display: block;
+        font-size: 10vw;
+        letter-spacing: -1.3vw;
+      }
     }
   }
+
+  .div-content-hero {
+
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    bottom: -70px;
+    padding: 1rem;
+
+    .content-hero {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: black;
+      margin-bottom: 40px;
+      border-radius: 16px;
+    }
+
+    .btn-hero {
+      @include btn-app($textColorPrimary);
+    }
+
+  }
+
+}
+
+// Homepage
+.section-homepage-informations {
+  margin-top: 250px;
+  max-width: 50%;
 }
 
 // Deposit document page
@@ -123,7 +177,7 @@ body {
     font-size: 1.5rem;
 
     &:hover {
-      background:lighten($colorSecondary, 10%);
+      background: lighten($colorSecondary, 10%);
     }
   }
 
@@ -135,10 +189,52 @@ body {
   }
 }
 
+// Pack-card
+.block-pack {
+  display: flex;
+  justify-content: space-around;
+
+  .card {
+    margin-bottom: 45px;
+    padding: 5px;
+
+    .card-price {
+      margin-bottom: 0;
+    }
+
+    .card-title {
+      color: white;
+      padding: 4px
+    }
+
+    .btn-card {
+      @include btn-app(#ababab8f, black);
+    }
+  }
+
+  .card-1 {
+    @include card-app(goldenrod, goldenrod, goldenrod);
+  }
+
+  .card-2 {
+    @include card-app(blueviolet, blueviolet, blueviolet);
+  }
+
+  .card-3 {
+    @include card-app(darkred, darkred, darkred);
+  }
+
+  .card-4 {
+    @include card-app(darkslategray, darkslategray, darkslategray);
+  }
+
+}
+
 // Footer
 #footer-presta-doc {
-  position: fixed;
+  position: relative;
   bottom: 0;
+  margin-top: 120px;
   background-color: #959799;
   width: 100%;
   color: black;

@@ -1,25 +1,29 @@
 {% extends 'base.html.twig' %}
+{% block title %}Bienvenue sur notre site.{% endblock %}
 
 {% block body %}
-	<div class="jumbotron text-center">
-
-		<div id="backgroung-color-text-content">
-
-			<h1 class="display-4">Bienvenue sur Presta-Doc</h1>
-			<p class="lead">Vous êtes un chef d’entreprise ou un entrepreneur débordé ? Confiez-moi vos tâches administratives !</p>
-			<hr class="my-4">
-			<h2>Qui suis je ?</h2>
-			<p class="lead mx-auto lead-content">De formation superieur en comptabilité, gestion et ressources humaines, depuis maintenant plus de dix ans, j’ai occupé de nombreux postes en tant que comptable et gestionnaire administratrif dans des entreprises de toute taille et des secteurs d’activité diversifié.</p>
-			<p class="lead mx-auto lead-content">Je propose mon expertise en tant qu'indépendante et je suis là pour vous aidez !</p>
-			<p class="lead">
-				<a class="btn btn-lg my-3" id="btn-homepage-contact" href="{{ path('contact') }}" role="button">Me contacter</a>
-			</p>
+	<header class="hero-video ">
+		<video src="/videos/hero-video.mp4" autoplay loop playsinline muted></video>
+		<div class="main-title-hero">
+			<h1>
+				Bienvenue sur
+				<span>Presta-Doc</span>
+			</h1>
 		</div>
-	</div>
+		<div class="div-content-hero">
+			<p class="content-hero">
+				Vous êtes un chef d’entreprise ou un entrepreneur débordé ? Confiez-moi vos tâches administratives !
+			</p>
+			<a href="{{ path('contact') }}">
+				<button class="btn-hero">Me contacter</button>
+			</a>
+		</div>
+	</header>
+	
+	<section class="section-homepage-informations mx-auto">
+		<p>De formation superieur en comptabilité, gestion et ressources humaines, depuis maintenant plus de dix ans, j’ai occupé de nombreux postes en tant que comptable et gestionnaire administratrif dans des entreprises de toute taille et des secteurs d’activité diversifié.</p>
+		<p>Je propose mon expertise en tant qu'indépendante et je suis là pour vous aidez !</p>
+	</section>
+	
 {% endblock %}
-{% block javascripts %}
-	{{ encore_entry_script_tags('app') }}
-	<script>
-		$(console.log('test'));
-	</script>
-{% endblock %}
+
