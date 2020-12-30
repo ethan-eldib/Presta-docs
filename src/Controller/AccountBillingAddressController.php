@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classes\Cart;
 use App\Entity\Address;
 use App\Form\BillingAddressType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,7 +32,7 @@ class AccountBillingAddressController extends AbstractController
     /**
      * @Route("/mon-compte/ajouter-une-adresse", name="add_billing_address")
      */
-    public function add(Request $request): Response
+    public function add(Cart $cart, Request $request): Response
     {
 
         $address = new Address();
@@ -45,7 +46,11 @@ class AccountBillingAddressController extends AbstractController
             $this->manager->persist($address);
             $this->manager->flush();
 
-            return $this->redirectToRoute('billing_address');
+            if ($cart->get()) {
+                return $this->redirectToRoute('order');
+            } else {
+                return $this->redirectToRoute('billing_address');
+            }
         }
 
         return $this->render('account/add_billing_address.html.twig', [
@@ -64,7 +69,7 @@ class AccountBillingAddressController extends AbstractController
         ]);
 
         if (!$address || $address->getUser() != $this->getUser()) {
-           return $this->redirectToRoute('billing_address');
+            return $this->redirectToRoute('billing_address');
         }
 
         $form = $this->createForm(BillingAddressType::class, $address);
@@ -95,7 +100,7 @@ class AccountBillingAddressController extends AbstractController
             $this->manager->remove($address);
             $this->manager->flush();
         }
-    
+
         return $this->redirectToRoute('billing_address');
         $this->addFlash(
             'success',
