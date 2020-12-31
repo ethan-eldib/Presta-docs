@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use DateTime;
+use Stripe\Stripe;
 use App\Classes\Cart;
 use App\Entity\Order;
 use App\Form\OrderType;
@@ -68,6 +69,8 @@ class OrderController extends AbstractController
 
             // Enregistrement de la commande Order()
             $order = new Order();
+            $reference = $date->format('dmY').'-'.uniqid();
+            $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
             $order->setBillingAddress($billingAddressContent);
@@ -83,7 +86,6 @@ class OrderController extends AbstractController
                 $orderDetails->setQuantity($pack['quantity']);
                 $orderDetails->setPrice($pack['pack']->getPrice());
                 $orderDetails->setTotal($pack['pack']->getPrice() * $pack['quantity']);
-
                 $this->manager->persist($orderDetails);
             }
 
@@ -91,7 +93,8 @@ class OrderController extends AbstractController
 
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
-                'billingAddress' => $billingAddressContent
+                'billingAddress' => $billingAddressContent,
+                'reference' => $order->getReference()
             ]);
         }
 

@@ -9,6 +9,8 @@
 /public/bundles/
 /var/
 /vendor/
+StripeController.php
+order/add.html.twig
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
