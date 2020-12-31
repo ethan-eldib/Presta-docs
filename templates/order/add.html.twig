@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement de ma commande{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h2 class="text-center">Mon récapitulatif</h2>
+		<p class="mb-0 text-center">Merci de vérifiez vos informations avant de payer votre commande.</p><br>
+		<hr>
+		<div class="row">
+			<div class="col-md-6">
+				<b>Adresse de facturation</b><br>
+                {{ billingAddress|raw }}
+			</div>
+			<div class="col-md-6">
+                {% set total = null %}
+				{% for pack in cart %}
+					<div class="row">
+						<div class="col-2">
+							<img src="https://picsum.photos/64/64" alt="">
+						</div>
+						<div class="col-8 my-auto">
+							{{ pack.pack.name }}<br>
+							<small>
+								x {{ pack.quantity }}
+							</small>
+						</div>
+						<div class="col-2 my-auto">
+                            {{ pack.pack.price * pack.quantity }} €
+                        </div>
+					</div>
+                    {% set total = total + (pack.pack.price * pack.quantity) %}
+				{% endfor %}
+			</div>
+		</div>
+            <hr>
+            <div class="float-right">
+                <strong>Total :</strong> {{ total }} € /mois <br>
+                <a href="#">
+                    <button>Payer | {{ total }} €</button>
+                </a>
+            </div>
+	</div>
+</div>
+{% endblock %}

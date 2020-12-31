@@ -1,93 +1,79 @@
-<div class="container-fluid mt-5">
-	<div class="row justify-content-center">
-		<div class="col-md-8">
-			<div class="table-responsive">
-			{% if cart|length > 0 %}
-				<table id="myTable" class="table">
-						<thead>
-							<tr>
-								<th>Pack</th>
-								<th>Contenu</th>
-								<th>Qté</th>
-								<th>Prix unitaire</th>
-								<th class="text-right">
-									<span id="amount" class="amount">Total</span>
-								</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							{% set total = null %}
-							{% set totalPack = null %}
+<div class="mt-5">
+	{% if cart|length > 0 %}
+		<table id="cart" class="table table-hover table-condensed">
+			<thead>
+				<tr>
+					<th style="width:70%">Pack</th>
+					<th style="width:8%">Prix unit.</th>
+					<th style="width:10%">Qté</th>
+					<th style="width:7%">Total</th>
+					<th style="width:5%"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set total = null %}
+				{% set totalPack = null %}
 
-							{% for pack in cart %}
-								<tr>
-									<td>
-										<div class="product-img">
-											<div class="img-prdct"><img src="https://www.pos-agent.com/app_v2/assets/upload/product/product_892_20180823125535.jpg"></div>
-											<small>{{ pack.pack.name }}</small>
-										</div>
-									</td>
-									<td>
-										<p>{{ pack.pack.description|raw }}</p>
-									</td>
-									<td>
-										<div class="button-container">
-											<a class="js-prevent-default-link" href="{{ path('add_to_cart', { id : pack.pack.id }) }}">
-												<button  class="cart-qty-plus" type="button" value="+">+</button>
-											</a>
-											<input type="text" name="qty" min="0" class="qty form-control" value="{{ pack.quantity }}"/>
-											<a class="js-prevent-default-link" href="{{ path('decrease_to_cart', { id : pack.pack.id }) }}">
-												<button class="cart-qty-minus" type="button" value="-">-</button>
-											</a>
-										</div>
-									</td>
-									<td>
-										<input type="text" value="{{pack.pack.price}} €" class="price form-control" disabled>
-									</td>
-									<td align="right">
-										<span id="amount" class="amount">{{pack.pack.price * pack.quantity}}
-											€ /mois</span>
-									</td>
-									<td>
-										<a href="{{ path('delete_to_cart', { id : pack.pack.id }) }}">
-											<img class="icon-default-style" src="{{ asset('images/icons/trash.png') }}" alt="Delete my pack (trash icon from Flaticon)">
-										</a>
-									</td>
-								</tr>
-							</tbody>
-							{% set total = total + (pack.pack.price * pack.quantity) %}
-							{% set totalPack = totalPack + pack.quantity %}
-						</tbody>
-						{% endfor %}
-						<tfoot>
-							<tr>
-								<td colspan="4"></td>
-								<td align="right">
-									<span>
-										<b>Nombre de pack(s) =</b>
-										{{ totalPack }}
-									</span>
-									<span id="total" class="total">
-										<b>TOTAL =</b>
-										{{ total }}€ /mois
-									</span>
-									<a href="{{ path('order') }}">
-										<button>Valider mon panier</button>
-									</a>
-								</td>
-							</tr>
-					</tfoot>
-				</table>
-			{% else %}
-				<div class="container">
-					<div class="alert alert-info">
-						<h3 class="alert-heading">Votre panier est vide.</h3>
-						<p class="lead">Vous souhaitez acheter un de nos packs ? Cliquez <a href="{{ path('pack_doc') }}">ici</a>.</p>
-					</div>
-				</div>
-			{% endif %}
+				{% for pack in cart %}
+					<tr>
+						<td>
+							<div class="row">
+								<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+								<div class="col-sm-10">
+									<h4 class="nomargin">Contenu du pack</h4>
+									{{ pack.pack.description|raw }}
+								</div>
+							</div>
+						</td>
+						<td data-th="Prix unit.">
+							<input type="text" value="{{pack.pack.price}} €" class="price form-control" disabled>
+						</td>
+						<td data-th="Qté">
+							<div id="btn-quantity">
+								<a href="{{ path('add_to_cart', { id : pack.pack.id }) }}">
+									<button class="cart-qty-plus" type="button" value="+">+</button>
+								</a>
+								<input type="text" name="qty" min="0" class="qty form-control" value="{{ pack.quantity }}"/>
+								<a href="{{ path('decrease_to_cart', { id : pack.pack.id }) }}">
+									<button class="cart-qty-minus" type="button" value="-">-</button>
+								</a>
+							</div>
+						</td>
+						<td data-th="Total">
+							{{pack.pack.price * pack.quantity}}
+							€ /mois
+						</td>
+						<td class="actions">
+							<a href="{{ path('delete_to_cart', { id : pack.pack.id }) }}">
+								<img class="icon-default-style" src="{{ asset('images/icons/trash.png') }}" alt="Delete my pack (trash icon from Flaticon)">
+							</a>
+						</td>
+					</tr>
+					{% set total = total + (pack.pack.price * pack.quantity) %}
+					{% set totalPack = totalPack + pack.quantity %}
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="float-right mb-5">
+			<a href="#" class="btn btn-info">
+				<i class="fa fa-angle-left"></i>
+				Continuer vos achats
+			</a> <br>
+
+			<b>Nombre de pack(s) =</b>{{ totalPack }} <br>
+			<b>TOTAL =</b>{{ total }}€ /mois <br>
+
+			<a href="{{ path('order') }}">
+				<button class="mt-4">Valider mon panier</button>
+			</a>		
 		</div>
-	</div>
+	{% else %}
+		<div class="container">
+			<div class="alert alert-info">
+				<h3 class="alert-heading">Votre panier est vide.</h3>
+				<p class="lead">Vous souhaitez acheter un de nos packs ? Cliquez
+					<a href="{{ path('pack_doc') }}">ici</a>.</p>
+			</div>
+		</div>
+	{% endif %}
 </div>
-

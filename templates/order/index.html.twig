@@ -1,20 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Validation de ma commande
-{% endblock %}
+{% block title %}Validation de ma commande{% endblock %}
 
 {% block body %}
 	<div class="container mt-5">
 		<h2 class="text-center">Je passe ma commande</h2>
-		<p class="mb-0 text-center">Merci de vérifiez vos achats avant de passer votre commande.</p><br>
 		<hr>
 		<div class="row">
 			<div class="col-md-6">
 				{% if app.user.addresses|length > 0 %}
 					{% set formHtml %}
-                        {{form_start(form)}}
+                        {{form_start(form, {action:path('order_recap')})}}
                             {{form_row(form.addresses)}}
-                        <button type="submit">Valider ma commande</button>
+                        	<button type="submit">Valider ma commande</button>
                         {{form_end(form)}}
 					{% endset %}
 
@@ -46,7 +44,6 @@
                     </div>   
                 </div>
                 {% endfor %}
-				<b>Bouton pour payeo</b>
 			</div>
 		</div>
 	</div>

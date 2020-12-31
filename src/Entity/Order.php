@@ -41,6 +41,11 @@ class Order
      */
     private $isPaid;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $billingAddress;
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
@@ -113,6 +118,18 @@ class Order
     public function setIsPaid(bool $isPaid): self
     {
         $this->isPaid = $isPaid;
+
+        return $this;
+    }
+
+    public function getBillingAddress(): ?string
+    {
+        return $this->billingAddress;
+    }
+
+    public function setBillingAddress(string $billingAddress): self
+    {
+        $this->billingAddress = $billingAddress;
 
         return $this;
     }

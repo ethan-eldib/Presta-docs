@@ -1,0 +1,68 @@
+// Style de la page affichant le panier
+@media screen and (max-width: 600px) {
+    table#cart tbody td .form-control {
+        width: 20%;
+        display: inline !important;
+    }
+
+    #btn-quantity {
+        display: contents !important;
+    }
+
+    table#cart thead {
+        display: none;
+    }
+
+    table#cart tbody td {
+        display: block;
+        padding: .6rem;
+        min-width: 320px;
+    }
+
+    table#cart tbody tr td:first-child {
+        background: rgba(51, 51, 51, 0.418);
+        color: #fff;
+    }
+
+    table#cart tbody td:before {
+        content: attr(data-th);
+        font-weight: bold;
+        display: inline-block;
+        width: 8rem;
+    }
+
+    table#cart tfoot td {
+        display: block;
+    }
+
+    table#cart tfoot td .btn {
+        display: block;
+    }
+}
+
+
+.table {
+
+    tbody>tr>td,
+    tfoot>tr>td {
+        vertical-align: middle;
+    }
+
+    #btn-quantity {
+        display: flex;
+    }
+
+    .cart-qty-plus,
+    .cart-qty-minus {
+        width: 38px;
+        height: 38px;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+
+        &:hover {
+            background-color: #5161ce;
+            color: #fff;
+        }
+    }
+}

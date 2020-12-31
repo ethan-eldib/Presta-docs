@@ -1,0 +1,16 @@
+// Style de la barre de navigation
+.navbar {
+    a {
+      color: $textColorPrimary;
+      font-weight: 500;
+  
+      &:hover {
+        color: lighten($textColorPrimary, 10%);
+      }
+    }
+  
+    .navbar-divider-line {
+      position: relative;
+      bottom: -7px;
+    }
+  }

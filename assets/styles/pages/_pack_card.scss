@@ -1,0 +1,40 @@
+// Style de la page qui affiche les cartes des packs
+.block-pack {
+    display: flex;
+    justify-content: space-around;
+  
+    .card {
+      margin-bottom: 45px;
+      padding: 5px;
+  
+      .card-price {
+        margin-bottom: 0;
+      }
+  
+      .card-title {
+        color: white;
+        padding: 4px
+      }
+  
+      .btn-card {
+        @include btn-app(#ababab8f, black);
+      }
+    }
+  
+    .card-1 {
+      @include card-app(goldenrod, goldenrod, goldenrod);
+    }
+  
+    .card-2 {
+      @include card-app(blueviolet, blueviolet, blueviolet);
+    }
+  
+    .card-3 {
+      @include card-app(darkred, darkred, darkred);
+    }
+  
+    .card-4 {
+      @include card-app(darkslategray, darkslategray, darkslategray);
+    }
+  
+  }
