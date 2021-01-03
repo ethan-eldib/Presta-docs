@@ -17,20 +17,21 @@
 		<p id="show-files" class="text-center"></p>
 
 	{# Vérifier si la route est "folders_edit" on affiche les documents #}
-	{% if app.request.attributes.get('_route') == 'folders_edit' %}
+	{# {% if app.request.attributes.get('_route') == 'folders_edit' %}
 
 		<h2>Vos documents</h2>
 		{% for document in folder.documents %}
 			<div>
-				<embed src="{{ asset('/uploads/' ~ document.name) }}" type='application/pdf'>
+				<embed src="{{ asset('/uploads/' ~ document.name) }}" type='application/pdf' >
 				<a href="{{ path('delete_document', {id: document.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ document.id) }}">Supprimer</a>
 				<a href="{{ asset('/uploads/' ~ document.name) }}">Visualiser</a>
 			</div>
 		{% endfor %}
 
-	{% endif %}
+	{% endif %} #}
 	{{ form_end(form) }}
 </div>
+
 {% block javascripts %}
 	{{ encore_entry_script_tags('app') }}
 	<script>

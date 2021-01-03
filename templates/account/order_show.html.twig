@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Ma commande
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5">
+		<div class="alert alert-info text-center">
+			<h1 class="alert-heading mb-3">Ma commande n° {{ order.reference }}</h1>
+			<hr>
+		</div>
+        <pre>
+            {{ dump(order) }}
+        </pre>
+		<p class="mt-5">Retournez sur votre
+			<a href="{{ path('my_account') }}">compte.</a>
+		</p>
+	</div>
+{% endblock %}

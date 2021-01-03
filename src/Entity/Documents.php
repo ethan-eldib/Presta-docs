@@ -26,7 +26,13 @@ class Documents
      * @ORM\ManyToOne(targetEntity=Folders::class, inversedBy="documents")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $forlders;
+    private $folders;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="documents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -45,14 +51,26 @@ class Documents
         return $this;
     }
 
-    public function getForlders(): ?Folders
+    public function getFolders(): ?Folders
     {
-        return $this->forlders;
+        return $this->folders;
     }
 
-    public function setForlders(?Folders $forlders): self
+    public function setFolders(?Folders $folders): self
     {
-        $this->forlders = $forlders;
+        $this->folders = $folders;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

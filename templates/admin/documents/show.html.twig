@@ -1,0 +1,52 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}
+	Contenu du dossier
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5 ">
+		<h1 class="text-center mb-5">
+			Contenu du dossier "{{ document.folders.title}}"
+		</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Identifiant</th>
+					<td>
+						Dossier n°
+						<small class="bagde badge-pill badge-primary">{{ document.folders.id}}</small>
+					</td>
+				</tr>
+				<tr>
+					<th>Utilisateur lié au dépôt</th>
+					<td>
+						<strong>
+							{{ document.user.lastName }}
+						</strong>
+						{{ document.user.firstName }} <br>
+						<small class="badge badge-pill badge-primary">
+							{{ document.user.email }}
+						</small>				
+					</td>
+				</tr>
+			</tbody>
+		</table>
+        <hr>
+		<h5 class="mt-5 text-center">Document(s) déposé(s)</h5>
+
+		{% for allDocument in allDocuments %}
+			{% if document.folders.id == allDocument.folders.id  %}
+				<div class="col-md-8 mx-auto mt-5 card">
+					<embed src="{{ asset('/uploads/' ~ document.name) }}" type='application/pdf'>
+					<a href="{{ asset('/uploads/' ~ document.name) }}" download="{{document.name}}">
+						<i class="fas fa-download"></i>
+					</a>
+				</div>
+			{% endif %}
+		{% endfor %}
+
+	</div>
+
+{% endblock %}

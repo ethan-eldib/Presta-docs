@@ -10,7 +10,7 @@
 /var/
 /vendor/
 StripeController.php
-order/add.html.twig
+templates/order/add.html.twig
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

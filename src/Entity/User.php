@@ -64,11 +64,29 @@ class User implements UserInterface
      */
     private $orders;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Role::class, mappedBy="users")
+     */
+    private $userRoles;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Folders::class, mappedBy="user")
+     */
+    private $folders;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="user")
+     */
+    private $documents;
+
     public function __construct()
     {
         $this->uploads = new ArrayCollection();
         $this->addresses = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->userRoles = new ArrayCollection();
+        $this->folders = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -126,7 +144,13 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        $roles = $this->userRoles->map(function($role){
+            return $role->getTitle();
+        })->toArray();
+
+        $roles[] = 'ROLE_USER';
+
+        return $roles;
     }
 
     public function getPassword()
@@ -209,4 +233,90 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return Collection|Role[]
+     */
+    public function getUserRoles(): Collection
+    {
+        return $this->userRoles;
+    }
+
+    public function addUserRole(Role $userRole): self
+    {
+        if (!$this->userRoles->contains($userRole)) {
+            $this->userRoles[] = $userRole;
+            $userRole->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserRole(Role $userRole): self
+    {
+        if ($this->userRoles->removeElement($userRole)) {
+            $userRole->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Folders[]
+     */
+    public function getFolders(): Collection
+    {
+        return $this->folders;
+    }
+
+    public function addFolder(Folders $folder): self
+    {
+        if (!$this->folders->contains($folder)) {
+            $this->folders[] = $folder;
+            $folder->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFolder(Folders $folder): self
+    {
+        if ($this->folders->removeElement($folder)) {
+            // set the owning side to null (unless already changed)
+            if ($folder->getUser() === $this) {
+                $folder->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Documents[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Documents $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Documents $document): self
+    {
+        if ($this->documents->removeElement($document)) {
+            // set the owning side to null (unless already changed)
+            if ($document->getUser() === $this) {
+                $document->setUser(null);
+            }
+        }
+
+        return $this;
+    }
 }

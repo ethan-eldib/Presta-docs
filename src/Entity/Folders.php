@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\FoldersRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Documents;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FoldersRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=FoldersRepository::class)
@@ -63,7 +64,7 @@ class Folders
     {
         if (!$this->documents->contains($document)) {
             $this->documents[] = $document;
-            $document->setForlders($this);
+            $document->setFolders($this);
         }
 
         return $this;
@@ -73,11 +74,12 @@ class Folders
     {
         if ($this->documents->removeElement($document)) {
             // set the owning side to null (unless already changed)
-            if ($document->getForlders() === $this) {
-                $document->setForlders(null);
+            if ($document->getFolders() === $this) {
+                $document->setFolders(null);
             }
         }
 
         return $this;
     }
+
 }
