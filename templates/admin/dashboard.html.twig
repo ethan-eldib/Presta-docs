@@ -1,9 +1,55 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Page d'administration{% endblock %}
+{% block title %}
+	Tableau de bord
+{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <h1 class="my-5 text-center">Page d'administration</h1>
-    </div>
+	<div class="container-fluid mt-5">
+		<div class="row">
+			<div class="col">
+				<div class="card bg-primary text-white mb-3 text-center">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-4">
+								<i class="fas fa-users fa-3x"></i>
+							</div>
+							<div class="col-8">
+								<h4 class="card-title">{{ stats.users }} utilisateurs inscrits</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card bg-dark text-white mb-3 text-center">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-4">
+								<i class="fas fa-folder-open fa-3x"></i>
+							</div>
+							<div class="col-8">
+								<h4 class="card-title">{{ stats.documents }} documents déposés</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card bg-warning text-white mb-3 text-center">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-4">
+								<i class="fas fa-tags fa-3x"></i>
+							</div>
+							<div class="col-8">
+								<h4 class="card-title">{{ stats.orders }} commandes</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <hr>
+	</div>
 {% endblock %}
