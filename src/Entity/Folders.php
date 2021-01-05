@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Entity\Documents;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\FoldersRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 

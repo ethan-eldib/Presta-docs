@@ -31,13 +31,17 @@ class AccountOrderController extends AbstractController
     }
 
     /**
-     * @Route("/mon-compte/mes-commandes/{reference}", name="account_order_show")
+     * @Route("/mon-compte/ma-commande/{reference}", name="account_order_show")
      */
     public function show($reference): Response
     {
         $order = $this->manager->getRepository(Order::class)->findOneBy([
             'reference' => $reference
         ]);
+
+        if (!$order || $order->getUser() != $this->getUser()) {
+            return $this->redirectToRoute('account_order');
+        }
 
         return $this->render('account/order_show.html.twig', [
             'order' => $order

@@ -70,14 +70,14 @@ class User implements UserInterface
     private $userRoles;
 
     /**
-     * @ORM\OneToMany(targetEntity=Folders::class, mappedBy="user")
-     */
-    private $folders;
-
-    /**
      * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="user")
      */
     private $documents;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Folders::class, mappedBy="user")
+     */
+    private $folders;
 
     public function __construct()
     {
@@ -85,8 +85,8 @@ class User implements UserInterface
         $this->addresses = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->userRoles = new ArrayCollection();
-        $this->folders = new ArrayCollection();
         $this->documents = new ArrayCollection();
+        $this->folders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -261,36 +261,6 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Folders[]
-     */
-    public function getFolders(): Collection
-    {
-        return $this->folders;
-    }
-
-    public function addFolder(Folders $folder): self
-    {
-        if (!$this->folders->contains($folder)) {
-            $this->folders[] = $folder;
-            $folder->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFolder(Folders $folder): self
-    {
-        if ($this->folders->removeElement($folder)) {
-            // set the owning side to null (unless already changed)
-            if ($folder->getUser() === $this) {
-                $folder->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Documents[]
      */
     public function getDocuments(): Collection
@@ -314,6 +284,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($document->getUser() === $this) {
                 $document->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Folders[]
+     */
+    public function getFolders(): Collection
+    {
+        return $this->folders;
+    }
+
+    public function addFolder(Folders $folder): self
+    {
+        if (!$this->folders->contains($folder)) {
+            $this->folders[] = $folder;
+            $folder->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFolder(Folders $folder): self
+    {
+        if ($this->folders->removeElement($folder)) {
+            // set the owning side to null (unless already changed)
+            if ($folder->getUser() === $this) {
+                $folder->setUser(null);
             }
         }
 
