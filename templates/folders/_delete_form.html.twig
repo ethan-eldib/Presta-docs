@@ -1,5 +1,1 @@
-<form method="post" action="{{ path('folders_delete', {'id': folder.id}) }}" onsubmit="return confirm(Supprimer le dossier ainsi que son contenu ?');">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ folder.id) }}">
-    <button class="btn btn-danger">Supprimer</button>
-</form>
+
