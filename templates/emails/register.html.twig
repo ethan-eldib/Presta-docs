@@ -1,0 +1,18 @@
+{% apply inline_css(source('@styles/register.css')) %}
+
+{# <img src="{{ email.image('@images/hero.jpg') }}" alt=""> #}
+
+<h1>Bienvenue sur Presta-Doc !</h1>
+
+<h2>Cher(e) {{ vars[0] }} {{ vars[1] }},</h2>
+<p>
+    Vous avez reçu cette email parce que vous vous êtes récemment inscrit à notre site internet.
+</p>
+
+<strong> Merci à vous.</strong>
+
+<a href="https//presta-doc.fr">
+    <button>Vous rendre sur le site</button>
+</a>
+
+{% endapply %}

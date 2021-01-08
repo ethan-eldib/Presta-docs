@@ -298,25 +298,25 @@ class User implements UserInterface
         return $this->folders;
     }
 
-    public function addFolder(Folders $folder): self
-    {
-        if (!$this->folders->contains($folder)) {
-            $this->folders[] = $folder;
-            $folder->setUser($this);
-        }
+    // public function addFolder(Folders $folder): self
+    // {
+    //     if (!$this->folders->contains($folder)) {
+    //         $this->folders[] = $folder;
+    //         $folder->setUser($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeFolder(Folders $folder): self
-    {
-        if ($this->folders->removeElement($folder)) {
-            // set the owning side to null (unless already changed)
-            if ($folder->getUser() === $this) {
-                $folder->setUser(null);
-            }
-        }
+    // public function removeFolder(Folders $folder): self
+    // {
+    //     if ($this->folders->removeElement($folder)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($folder->getUser() === $this) {
+    //             $folder->setUser(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

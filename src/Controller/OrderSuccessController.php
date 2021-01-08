@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Classes\Cart;
+use App\Classes\Mail;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +43,9 @@ class OrderSuccessController extends AbstractController
             $this->manager->flush();
 
             // Envoyer un email au client pour la confirmation de la commande
+            $content = "Bonjour". $order->getUser()->getFirstName()."<br/>Merci pour votre commande. <br/><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia at praesentium eius quae dolorem quibusdam aliquid ipsum suscipit, est quos, id error debitis eligendi nostrum totam recusandae. Earum esse qui nemo, quas repellendus pariatur et. Eligendi, ratione deserunt! Cum dignissimos sint laboriosam esse? Vel, dolorem."; 
+            $mail = new Mail();
+            $mail->send($order->getUser()->getEmail(), $order->getUser()->getFirstName(), 'Votre commande Presta-Doc est bien validée.', $content );
         }
 
         return $this->render('order_success/index.html.twig', [

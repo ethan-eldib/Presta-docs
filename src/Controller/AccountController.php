@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+// use App\Classes\Mail;
 use App\Entity\User;
 use App\Form\EditPasswordType;
 use App\Form\RegistrationType;
+use App\Service\EmailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,12 +22,11 @@ class AccountController extends AbstractController
      * @Route("/login", name="account_login")
      * 
      */
-    public function login() 
+    public function login()
     {
         return $this->render('account/login.html.twig');
 
         $this->redirectToRoute('my_account');
-
     }
 
     /**
@@ -47,7 +48,7 @@ class AccountController extends AbstractController
      *
      * @return Response
      */
-    public function register(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
+    public function register(EmailService $email, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
 
@@ -62,12 +63,21 @@ class AccountController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
+            $email->sendEmail(
+                $user->getEmail(),
+                'emails/register.html.twig',
+                'Bienvenue sur Presta-Doc',
+                [
+                    $user->getLastName(),
+                    $user->getFirstName()
+                ]
+
+            );
+          
             $this->addFlash(
                 'success',
                 'Merci pour votre inscription !'
             );
-
-            return $this->redirectToRoute('account_login');
         }
 
         return $this->render('account/registration.html.twig', [
@@ -80,7 +90,7 @@ class AccountController extends AbstractController
      *
      * @Route("/mon-compte", name="my_account")
      */
-    public function myAccount() 
+    public function myAccount()
     {
         return $this->render('account/my_account.html.twig');
     }
@@ -90,7 +100,7 @@ class AccountController extends AbstractController
      *
      * @Route("/mon-compte/modifier-mon-mot-de-passe", name="account_password")
      */
-    public function editPassword(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $manager) 
+    public function editPassword(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $manager)
     {
         $user = $this->getUser();
         $form = $this->createForm(EditPasswordType::class, $user);
@@ -98,7 +108,7 @@ class AccountController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $old_password = $form->get('old_password')->getData();
 
             if ($encoder->isPasswordValid($user, $old_password)) {
@@ -112,7 +122,7 @@ class AccountController extends AbstractController
                     'success',
                     'Votre mot de passe a bien éré mis à jour.'
                 );
-            }else {
+            } else {
                 $this->addFlash(
                     'warning',
                     'Le mot de passe actuel est incorrect.'
