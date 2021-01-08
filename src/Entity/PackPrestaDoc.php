@@ -32,6 +32,11 @@ class PackPrestaDoc
      */
     private $price;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $illustration;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class PackPrestaDoc
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(string $illustration): self
+    {
+        $this->illustration = $illustration;
 
         return $this;
     }

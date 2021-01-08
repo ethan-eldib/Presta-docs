@@ -1,40 +1,106 @@
 // Style de la page qui affiche les cartes des packs
-.block-pack {
+.block-page-card-pack {
+  .block-pack {
     display: flex;
     justify-content: space-around;
-  
+
     .card {
+      position: relative;
+      max-width: 500px;
       margin-bottom: 45px;
+      height: 85vh;
       padding: 5px;
-  
+
       .card-price {
         margin-bottom: 0;
+        font-size: $smallFontSize;
+        font-weight: bold;
       }
-  
+
       .card-title {
         color: white;
-        padding: 4px
+        margin-top: 15px;
       }
-  
+
+      #link-buy-card {
+        position: absolute;
+        bottom: -20px;
+        right: 0;
+      }
+
       .btn-card {
-        @include btn-app(#ababab8f, black);
+        @include btn-app($colorSecondary, white);
+      }
+
+    }
+
+    #img-tags-pack-card {
+      max-width: 145px;
+      max-height: 145px;
+      position: absolute;
+      top: 72px;
+      right: -25px;
+    }
+
+    .card-content {
+      width: 75%;
+      font-weight: bold;
+      padding: 5px 0px;
+      margin: 0 auto;
+    }
+
+    .card-1 {
+      @include card-app($colorSecondary, $colorSecondary, $colorSecondary);
+    }
+
+    .card-2 {
+      @include card-app($colorSecondary, $colorSecondary, $colorSecondary);
+      .card-content {
+        position: relative;
+        bottom: -13%;
       }
     }
-  
-    .card-1 {
-      @include card-app(goldenrod, goldenrod, goldenrod);
-    }
-  
-    .card-2 {
-      @include card-app(blueviolet, blueviolet, blueviolet);
-    }
-  
+
     .card-3 {
-      @include card-app(darkred, darkred, darkred);
+      @include card-app($colorSecondary, $colorSecondary, $colorSecondary);
     }
-  
+
     .card-4 {
-      @include card-app(darkslategray, darkslategray, darkslategray);
+      @include card-app($colorSecondary, $colorSecondary, $colorSecondary);
+      .card-content{
+        position: relative;
+        bottom: -13%;
+      }
     }
-  
   }
+
+  // Media query
+  @include sm {
+
+    .card {
+      margin-left: 5px;
+      margin-right: 5px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: $mediumFontSize;
+    }
+
+    h2 {
+      font-size: $smallFontSize;
+      margin: 0 auto;
+    }
+
+    #img-tags-pack-card {
+      max-width: 105px !important;
+      max-height: 105px !important;
+      top: 50px !important;
+      right: -3px !important;
+    }
+
+    .card-content {
+      font-size: $xsFontSize;
+    }
+  }
+}

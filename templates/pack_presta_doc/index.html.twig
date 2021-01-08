@@ -4,8 +4,16 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container text-center my-5">
+	<div class="container text-center my-5 block-page-card-pack">
 		<h1 class="mb-5">Packs Presta-Doc</h1>
+
+		<div class="card mb-5">
+			<div class="card-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </div>
+			<hr>
+				<div class="card-body ">
+					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo in eius, itaque fugit minima vero.</p>
+				</div>
+		</div>
 		<div class="row block-pack">
 			{% for pack in packs %}
 				{% include "pack_presta_doc/_card_pack.html.twig" %}

@@ -1,14 +1,16 @@
 <div class="card card-{{ loop.index }}">
 	<div class="pricing-header">
+	<img src="{{ pack.illustration }}" id="img-tags-pack-card" alt="Image du pack">
 		<h2 class="card-title">{{ pack.name }}</h2>
 		<div class="price-circle">
 			<p class="card-price">{{ pack.price }} €</p>
-			<small class="info">/ Mois</small>
+			<span class="info">/ Mois</span>
 		</div>
 	</div>
-	<p>{{ pack.description|raw }}</p>
-
-	<a href="{{ path('add_to_cart', { id : pack.id }) }}">
+	<div class="card-content">
+			{{ pack.description|raw }}
+	</div>
+	<a id="link-buy-card" href="{{ path('add_to_cart', { id : pack.id }) }}">
 		<button class="btn-card">ACHETER CE PACK</button>
 	</a>
 </div>

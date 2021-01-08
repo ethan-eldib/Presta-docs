@@ -1,68 +1,71 @@
 // Style du hero de la page d'accueil qui affiche une vidéo
 .hero-video {
 
-    margin-top: 25px;
-  
-    .overlay {
-      background: rgba(black, 0.5);
-    }
-  
-    video {
-      z-index: -1;
-      object-fit: cover;
-      width: 100vw;
-      height: 90vh;
-      position: absolute;
-      top: 0;
-      left: 0;
-      filter: grayscale(0.7);
-    }
-  
-    .main-title-hero {
-      position: relative;
-      height: 100%;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  
-      h1 {
-        color: black;
-        text-transform: uppercase;
-        letter-spacing: 3vw;
-        line-height: 1.2;
-        font-size: 3vw;
-        text-align: center;
-  
-        span {
-          display: block;
-          font-size: 10vw;
-          letter-spacing: -1.3vw;
-        }
-      }
-    }
-  
-    .div-content-hero {
-  
-      text-align: center;
-      width: 50%;
-      margin: 0 auto;
-      position: relative;
-      bottom: -70px;
-      padding: 1rem;
-  
-      .content-hero {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: black;
-        margin-bottom: 40px;
-        border-radius: 16px;
-      }
-  
-      .btn-hero {
-        @include btn-app($textColorPrimary);
-      }
-  
-    }
-  
+  margin-top: 25px;
+
+  .overlay {
+    background: rgba(black, 0.5);
   }
+
+  video {
+    z-index: -1;
+    object-fit: cover;
+    width: 100vw;
+    height: 90vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: grayscale(0.7);
+  }
+
+  .main-title-hero {
+    position: relative;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      color: $textColorPrimary;
+      text-transform: uppercase;
+      letter-spacing: 3vw;
+      line-height: 1.2;
+      font-size: 3vw;
+      text-align: center;
+
+      #home-title-span {
+        display: block;
+        color: $colorSecondary;
+        font-size: 10vw;
+        letter-spacing: -1.3vw;
+      }
+    }
+  }
+
+  .div-content-hero {
+
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    bottom: -70px;
+    padding: 1rem;
+    background: #ffffff54;
+    border-radius: 5px;
+
+    .content-hero {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $textColorPrimary;
+      margin-bottom: 40px;
+      border-radius: 16px;
+    }
+
+    .btn-hero {
+      @include btn-app($colorSecondary);
+    }
+
+  }
+
+}

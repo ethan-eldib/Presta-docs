@@ -1,16 +1,40 @@
 // Style de la barre de navigation
 .navbar {
-    a {
-      color: $textColorPrimary;
-      font-weight: 500;
-  
-      &:hover {
-        color: lighten($textColorPrimary, 10%);
-      }
-    }
-  
-    .navbar-divider-line {
-      position: relative;
-      bottom: -7px;
+  a {
+    color: $textColorPrimary;
+    font-weight: 400;
+    font-size: $smallFontSize;
+
+    &:hover {
+      color: $colorSecondary;
+      transition: 0.4s ease-in-out;
     }
   }
+
+  #hr-divider-navbar {
+    display: none;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("/images/toggle/menu.png");
+  }
+
+  button:focus {
+    outline: 4px auto $colorSecondary;
+  }
+
+  @include lg {
+    #hr-divider-navbar {
+      display: block;
+      width: 20%;
+      margin-left: 0;
+      border-top: 2px solid $colorSecondary;
+    }
+
+    .nav-link {
+      padding: 0.1rem 1rem;
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}

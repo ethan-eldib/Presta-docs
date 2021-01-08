@@ -35,4 +35,8 @@
         background-color: lighten($btnColor, 6%);
         transition: 0.4s ease-in-out;
     }
+
+    @include sm {
+        font-size: $xsFontSizeButton;
+    }
 }
