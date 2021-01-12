@@ -7,8 +7,9 @@
     .card {
       position: relative;
       max-width: 500px;
+      box-shadow: 3px 5px 7px #7b7a7a;
       margin-bottom: 45px;
-      height: 85vh;
+      height: 700px;
       padding: 5px;
 
       .card-price {
@@ -19,6 +20,7 @@
 
       .card-title {
         color: white;
+        text-shadow: 3px 3px 3px #060606;
         margin-top: 15px;
       }
 

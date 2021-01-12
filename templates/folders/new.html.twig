@@ -6,7 +6,7 @@
 
 
 {% block body %}
-	<div class="container">
+	<div class="container block-page-deposit-document">
 		<h1 class="my-5 text-center">Déposez vos documents</h1>
 
 		{% if app.user %}
@@ -18,7 +18,7 @@
 					Bonjour à vous, il semblerait que vous ne soyez pas encore inscrit sur notre site pour vous permettre de déposer et nous transmettre des documents à traiter.
 				</p>
 				<hr>
-				<p class="mb-0">
+				<p class="mb-0 link-register">
 					Pour ce faire c'est très simple, cliquez <a href="{{ path('register') }}">ici pour vous inscrire</a> c'est gratuit.
 				</p>
 			</div>

@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-// use App\Classes\Mail;
 use App\Entity\User;
 use App\Form\EditPasswordType;
 use App\Form\RegistrationType;
@@ -71,7 +70,6 @@ class AccountController extends AbstractController
                     $user->getLastName(),
                     $user->getFirstName()
                 ]
-
             );
           
             $this->addFlash(

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Service;
 
@@ -23,18 +23,21 @@ class EmailService extends AbstractController
         $this->renderer = $renderer;
     }
 
-    public function sendEmail($toEmail, $templateEmailTwig, $subject, array $variablesToPassToViewTwig)
-    {
+    public function sendEmail(
+        $toEmail,
+        $templateEmailTwig,
+        $subject,
+        array $variablesToPassToViewTwig = []
+    ) {
         $email = (new TemplatedEmail())
-        ->from('noreply@presta-doc.fr')
-        ->to(new Address($toEmail))
-        ->subject($subject)
-        ->replyTo($toEmail)
-        ->htmlTemplate($templateEmailTwig)
-        ->context([
-            'vars' => $variablesToPassToViewTwig
-        ])
-        ;
+            ->from('noreply@presta-doc.fr')
+            ->to(new Address($toEmail))
+            ->subject($subject)
+            ->replyTo($toEmail)
+            ->htmlTemplate($templateEmailTwig)
+            ->context([
+                'vars' => $variablesToPassToViewTwig
+            ]);
         try {
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
@@ -42,4 +45,3 @@ class EmailService extends AbstractController
         }
     }
 }
-
