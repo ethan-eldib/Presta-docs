@@ -1,0 +1,45 @@
+{% apply inline_css(source('@styles/contact.css')) %}
+
+<div class="container">
+	<div class="border">
+		<h1>Demande de contact
+			<span>Presta-Doc</span>
+		</h1>
+		<hr id="divider-contact-email">
+		<p>
+			Vous avez reçu un message provenant du formulaire de contact Presta-Doc.
+		</p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Tél</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ vars[0] }}</td>
+					<td>{{ vars[1] }}</td>
+					<td>{{ vars[2] }}</td>
+					<td>{{ vars[3] }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="content">
+			<h4>Message :</h4>
+			<p>
+				{{ vars[4] }}
+			</p>
+		</div>
+
+		<a href="https//presta-doc.fr">
+			<button id="btn-contact-email">Vous rendre sur le site</button>
+		</a>
+	</div>
+</div>
+
+{% endapply %}

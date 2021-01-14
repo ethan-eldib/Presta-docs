@@ -33,10 +33,14 @@ class FoldersType extends AbstractType
                    new All([
                        'constraints' => [
                         new File([
+                            'maxSize' => '5Mi',
+                            'maxSizeMessage' => 'Limite de 5Mo dépassée',
                             'mimeTypes' => [
-                                'application/pdf'
+                                'application/pdf',
+                                'application/msword',
+                                'application/vnd.ms-excel'
                             ],
-                            'mimeTypesMessage' => 'Merci de télecharger un fichier au format PDF'
+                            'mimeTypesMessage' => 'Merci de télecharger un fichier au format PDF, WORD ou EXCEL'
                         ])
                        ]
                    ])

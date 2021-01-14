@@ -7,6 +7,12 @@
     border-color: #ffffff;
   }
 
+  div#folders_folders_errors {
+    z-index: 999999;
+    position: relative;
+    bottom: -226px;
+  }
+
   .lead {
     color: white;
   }

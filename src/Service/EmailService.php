@@ -25,6 +25,7 @@ class EmailService extends AbstractController
 
     public function sendEmail(
         $toEmail,
+        $replyTo = null,
         $templateEmailTwig,
         $subject,
         array $variablesToPassToViewTwig = []
@@ -33,7 +34,7 @@ class EmailService extends AbstractController
             ->from('noreply@presta-doc.fr')
             ->to(new Address($toEmail))
             ->subject($subject)
-            ->replyTo($toEmail)
+            ->replyTo($replyTo)
             ->htmlTemplate($templateEmailTwig)
             ->context([
                 'vars' => $variablesToPassToViewTwig
