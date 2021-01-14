@@ -3,5 +3,5 @@ twig:
     form_themes: ["bootstrap_4_layout.html.twig"]
 
     paths:
-        "%kernel.project_dir%/public/images/email/": images
+        "%kernel.project_dir%/public/images/email": images
         '%kernel.project_dir%/assets/styles/emails': styles

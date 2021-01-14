@@ -1,0 +1,28 @@
+.container-order {
+
+    .logo-pack {
+        max-width: 64px;
+        max-height: 64px;
+    }
+
+    #order_addresses {
+        .form-check {
+            margin-top: 15px;
+            background: #0000001c;
+            width: 28vh;
+            padding: 15px 25px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        input[type=radio] {
+            margin-left: -17px;
+            cursor: pointer;
+        }
+
+    }
+
+    .btn-order {
+        @include btn-app;
+    }
+}

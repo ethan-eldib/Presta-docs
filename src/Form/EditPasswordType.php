@@ -55,9 +55,6 @@ class EditPasswordType extends AbstractType
                         'placeholder' => 'Merci de confirmer votre nouveau mot de passe'
                     ]
                 ]
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Mettre à jour'
             ]);
     }
 

@@ -1,5 +1,9 @@
 // Style de la page qui affiche les cartes des packs
-.block-page-card-pack {
+.container-card-pack {
+  .bg-alert {
+    @include bg-alert('pack', $colorSecondary , goldenrod);
+  }
+
   .block-pack {
     display: flex;
     justify-content: space-around;

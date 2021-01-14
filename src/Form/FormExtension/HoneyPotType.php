@@ -25,11 +25,14 @@ class HoneyPotType extends AbstractType
 
     protected const SECOND_HONEY_POT_FOR_BOT = "company";
 
+    protected const THIRD_HONEY_POT_FOR_BOT = "subject";
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(self::FIRST_HONEY_POT_FOR_BOT, TextType::class, $this->setHoneyPotConfiguration())
-            ->add(self::SECOND_HONEY_POT_FOR_BOT, TextType::class, $this->setHoneyPotConfiguration())
-            ->addEventSubscriber(new HoneyPotSubscriber($this->honeyPotLogger, $this->requestStack));
+                ->add(self::SECOND_HONEY_POT_FOR_BOT, TextType::class, $this->setHoneyPotConfiguration())
+                ->add(self::THIRD_HONEY_POT_FOR_BOT, TextType::class, $this->setHoneyPotConfiguration())
+                ->addEventSubscriber(new HoneyPotSubscriber($this->honeyPotLogger, $this->requestStack));
     }
 
     protected function setHoneyPotConfiguration(): array

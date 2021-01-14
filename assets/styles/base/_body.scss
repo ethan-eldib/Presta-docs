@@ -4,22 +4,29 @@
 */
 body {
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: $title;
-      color: $textColorPrimary;
-    }
-  
-    p,
-    label,
-    button,
-    span,
-    small {
-      font-family: $textPrimary;
-      color: $textColorPrimary;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $title;
+    color: $textColorPrimary;
   }
+
+  p,
+  label,
+  button,
+  span,
+  small {
+    font-family: $textPrimary;
+    color: $textColorPrimary;
+  }
+
+  .logo-presta-doc {
+    max-width: 128px;
+    max-height: 128px;
+    border-radius: 10%;
+    box-shadow: 1px 0px 3px #000000ad;
+  }
+}

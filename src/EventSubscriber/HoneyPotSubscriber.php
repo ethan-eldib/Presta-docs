@@ -38,16 +38,17 @@ class HoneyPotSubscriber implements EventSubscriberInterface
 
         $data = $event->getData();
 
-        if (!array_key_exists('landLinePhone', $data) || !array_key_exists('company', $data)) {
+        if (!array_key_exists('landLinePhone', $data) || !array_key_exists('company', $data) || !array_key_exists('subject', $data)) {
             throw new HttpException(400, "Vous essayez de modifier le formulaire, merci de ne pas y toucher!");
         }
 
         [
             'landLinePhone'     => $landLinePhone,
-            'company'           => $company
+            'company'           => $company,
+            'subject'           => $subject
         ] = $data;
 
-        if ($landLinePhone !== "" || $company !== "") {
+        if ($landLinePhone !== "" && $company !== "" && $subject !== "") {
             $this->honeyPotLogger->info(
                 "Une tentative potentielle de spam bot avec l'adresse IP suivante: '{$request->getClientIp()}' a eu lieu. Le champ telephone fixe contenait'{$landLinePhone}' et le champ compagnie contenait '{$company}'."
             );

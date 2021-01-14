@@ -5,22 +5,29 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container my-5">
-		<h2>Confirmation de votre commande</h2>
-		<p>
-			Bonjour
-			{{ order.user.firstname }}
-			{{ order.user.lastname }},
-			<br>
-			Nous vous remercions pour votre commande n°
-			{{ order.reference }}.
-			<br>
-			Une confirmation vient de vous être envoyée à l'adresse email
-			{{ order.user.email }}.
-            <hr>       
-            <p>
-                Pour visualiser vos commande, rendez-vous dans votre <a href="{{ path('my_account') }}">espace personnel </a>dans la rubrique mes commandes.           
-            </p>
-		</p>
-	</div>
-{% endblock %}
+	<div class="container my-5 container-order-success">
+		<div class="alert bg-alert text-center">
+			<h1 class="alert-heading mb-3">Confirmation de votre commande</h1>
+			<hr id="divider-order-success">
+			<p class="mb-0">
+				Bonjour
+				{{ order.user.firstname }}
+				{{ order.user.lastname }}
+			</p>
+			<hr>
+			<p>
+				Nous vous remercions pour votre commande n°
+				<strong>{{ order.reference }}</strong>.
+				<br>
+				Une confirmation vient de vous être envoyée à l'adresse email
+				<strong>{{ order.user.email }}</strong>.
+			</p>
+			<hr>
+			<p>
+				Pour visualiser vos commandes, rendez-vous dans votre
+				<a href="{{ path('my_account') }}">espace personnel
+				</a>dans la rubrique mes commandes.
+			</p>
+		</div>
+	</p>
+</div>{% endblock %}

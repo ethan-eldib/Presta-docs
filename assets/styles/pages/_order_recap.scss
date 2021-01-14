@@ -1,0 +1,10 @@
+.container-order-recap {
+    .logo-pack {
+        max-width: 64px;
+        max-height: 64px;
+    }
+
+    .btn-checkout {
+        @include btn-app;
+    }
+}

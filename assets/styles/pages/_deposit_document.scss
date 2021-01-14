@@ -1,5 +1,5 @@
 // Style de la page de dépôt des documents
-.block-page-deposit-document {
+.container-deposit-document {
 
   .alert-info {
     color: #ffffff;
@@ -72,22 +72,20 @@
       height: 100%;
     }
 
-    #btn-folders-submit {
-      min-width: 15%;
-      background: $colorSecondary;
-      font-size: 1.5rem;
-
-      &:hover {
-        background: lighten($colorSecondary, 10%);
-      }
-    }
-
     .required:after {
       content: "*";
       font-weight: bold;
       color: red;
       margin-left: 5px;
     }
+
+    .btn-folders-submit {
+      @include btn-app;
+    }
+  }
+
+  .bg-alert {
+    @include bg-alert('deposit-document');
   }
 
 }

@@ -4,10 +4,16 @@
 	Déposez vos documents
 {% endblock %}
 
-
 {% block body %}
-	<div class="container block-page-deposit-document">
-		<h1 class="my-5 text-center">Déposez vos documents</h1>
+	<div class="container container-deposit-document">
+		<div class="alert bg-alert text-center mt-5">
+			<h1 class="alert-heading mb-3">Déposez vos documents</h1>
+			<hr id="divider-deposit-document">
+			<p class="mb-0">
+				Formats de fichier acceptés (PDF, WORD ou EXCEL)		
+			</p>
+			<small>* Vous pouvez envoyer des fichierss d'une taille maximale de 5 Mo. Si vous envoyez plusieurs fichiers, leur taille totale ne peut pas dépasser cette limite.</small>
+		</div>
 
 		{% if app.user %}
 			{{ include('folders/_form.html.twig') }}
@@ -19,7 +25,9 @@
 				</p>
 				<hr>
 				<p class="mb-0 link-register">
-					Pour ce faire c'est très simple, cliquez <a href="{{ path('register') }}">ici pour vous inscrire</a> c'est gratuit.
+					Pour ce faire c'est très simple, cliquez
+					<a href="{{ path('register') }}">ici pour vous inscrire</a>
+					c'est gratuit.
 				</p>
 			</div>
 		{% endif %}

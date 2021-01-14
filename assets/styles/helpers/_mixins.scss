@@ -40,3 +40,31 @@
         font-size: $xsFontSizeButton;
     }
 }
+
+@mixin bg-alert($dividerName, $bgColor:$colorSecondary, $linkColor: white) {
+    background-color: $bgColor;
+    padding: 50px;
+    margin-bottom: 85px;
+
+    #divider-#{$dividerName} {
+        border-top: 2px solid white;
+        width: 26%;
+        margin: 30px auto;
+    }
+
+    h3,
+    h2,
+    h1,
+    p,
+    small {
+        color: white;
+    }
+
+    a {
+        color: $linkColor;
+        text-decoration: none;
+        &:hover {
+            color: darken($linkColor, 15%);
+        }
+    }
+}

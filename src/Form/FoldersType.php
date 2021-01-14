@@ -19,7 +19,7 @@ class FoldersType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => "Nom du dossier",
                 'attr' => [
-                    'placeholder' => "Choisissez un nom pour votre dossier"
+                    'placeholder' => "Choisissez un nom pour votre dossier (obligatoire)"
                 ]
             ])
             // Ajout du champs "folders" dans le formulaire

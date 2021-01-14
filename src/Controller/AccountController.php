@@ -18,7 +18,7 @@ class AccountController extends AbstractController
     /**
      * Affiche le formulaire de connexion
      * 
-     * @Route("/login", name="account_login")
+     * @Route("/connexion", name="account_login")
      * 
      */
     public function login()

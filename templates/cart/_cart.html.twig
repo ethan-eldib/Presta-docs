@@ -3,11 +3,11 @@
 		<table id="cart" class="table table-hover table-condensed">
 			<thead>
 				<tr>
-					<th style="width:70%">Pack</th>
-					<th style="width:8%">Prix unit.</th>
-					<th style="width:10%">Qté</th>
-					<th style="width:7%">Total</th>
-					<th style="width:5%"></th>
+					<th style="width:60vh">Pack</th>
+					<th style="width:12vh">Prix unit.</th>
+					<th style="width:18vh">Qté</th>
+					<th style="width:5vh">Total</th>
+					<th style="width:2vh"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -18,9 +18,12 @@
 					<tr>
 						<td>
 							<div class="row">
-								<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-								<div class="col-sm-10">
+								<div class="col-sm-2 hidden-xs">
+									<img src="{{ pack.pack.illustration }}" alt="logo du pack" class="img-responsive"/>
+								</div>
+								<div class="col-sm-10 text-center">
 									<h4 class="nomargin">Contenu du pack</h4>
+									<hr class="divider-content-cart">
 									{{ pack.pack.description|raw }}
 								</div>
 							</div>
@@ -45,7 +48,7 @@
 						</td>
 						<td class="actions">
 							<a href="{{ path('delete_to_cart', { id : pack.pack.id }) }}">
-								<img class="icon-default-style" src="{{ asset('images/icons/trash.png') }}" alt="Delete my pack (trash icon from Flaticon)">
+								<i class="fas fa-trash"></i>
 							</a>
 						</td>
 					</tr>
@@ -55,17 +58,25 @@
 			</tbody>
 		</table>
 		<div class="float-right mb-5">
-			<a href="#" class="btn btn-info">
-				<i class="fa fa-angle-left"></i>
-				Continuer vos achats
-			</a> <br>
+			<a href="{{ path('pack_doc') }}">
+				<button class="mb-4 btn-continue-purchase">
+					<i class="fa fa-angle-left"></i>
+					Continuer vos achats
+				</button>
 
-			<b>Nombre de pack(s) =</b>{{ totalPack }} <br>
-			<b>TOTAL =</b>{{ total }}€ /mois <br>
+			</a>
+			<br>
+
+			<b>Nombre de pack(s) =</b>
+			{{ totalPack }}
+			<br>
+			<b>TOTAL =</b>
+			{{ total }}€ /mois
+			<br>
 
 			<a href="{{ path('order') }}">
-				<button class="mt-4">Valider mon panier</button>
-			</a>		
+				<button class="mt-4 btn-validate-cart">Valider mon panier</button>
+			</a>
 		</div>
 	{% else %}
 		<div class="container">

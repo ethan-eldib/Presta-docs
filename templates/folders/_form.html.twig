@@ -4,8 +4,6 @@
 
 	<div class="file-drop-area">
 		{{ form_row(form.title) }}
-		<p>Formats de fichier acceptés (PDF, WORD ou EXCEL)</p>
-		<small>* Vous pouvez envoyer des fichierss d'une taille maximale de 5 Mo. Si vous envoyez plusieurs fichiers, leur taille totale ne peut pas dépasser cette limite.</small>
 		<div class="content-drag">
 			<i class="fas fa-cloud-upload-alt" id="icon-uploads"></i>
 			<p id="content-description-drag">
@@ -16,7 +14,9 @@
 		<p id="count-files"></p>
 		<p id="files-name"></p>
 
-		<button class="btn btn-primary" id="btn-folders-submit">{{ button_label|default('Déposer') }}</button>
+		<button class="btn-folders-submit">
+			Déposer
+		</button>
 	</div>
 	{{ form_end(form) }}
 </div>
@@ -25,19 +25,19 @@
 	{{ encore_entry_script_tags('app') }}
 	<script>
 		$(document).ready(function () {
-			$('input[type="file"]').change(function (e) {
+$('input[type="file"]').change(function (e) {
 
-				let numberFile = e.target.files.length;
-				let fileName = [];
-				$('#count-files').text (`Vous avez sélectionné ${numberFile} fichier(s)`);
+let numberFile = e.target.files.length;
+let fileName = [];
+$('#count-files').text (`Vous avez sélectionné ${numberFile} fichier(s)`);
 
-				for(let i = 0; i < e.target.files.length; i++) {
-					let name = e.target.files[i].name;	
-					fileName.push(name);
-					$('#files-name').text (`Nom du ou des fichier(s)  : ${fileName}`);
-				}
+for (let i = 0; i < e.target.files.length; i++) {
+let name = e.target.files[i].name;
+fileName.push(name);
+$('#files-name').text (`Nom du ou des fichier(s)  : ${fileName}`);
+}
 
-			});
-		});
+});
+});
 	</script>
 {% endblock %}
