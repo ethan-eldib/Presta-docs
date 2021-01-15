@@ -8,7 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;    
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -46,6 +47,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(pattern="/^(?=.*[a-zA-Z])(?=.*\d).{6,}$/i", message="Le mot de passe doit comporter au moins 6 caractères et inclure au moins une lettre majuscule et un chiffre."
+     * )
      */
     private $hash;
 
@@ -144,7 +147,7 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        $roles = $this->userRoles->map(function($role){
+        $roles = $this->userRoles->map(function ($role) {
             return $role->getTitle();
         })->toArray();
 

@@ -18,13 +18,13 @@
 		{% if app.user %}
 			{{ include('folders/_form.html.twig') }}
 		{% else %}
-			<div class="alert alert-info" role="alert">
+			<div class="alert alert-warning" role="alert">
 				<h3 class="alert-heading text-center mb-3">Inscription gratuite sur Presta-doc</h3>
 				<p class="lead">
 					Bonjour à vous, il semblerait que vous ne soyez pas encore inscrit sur notre site pour vous permettre de déposer et nous transmettre des documents à traiter.
 				</p>
 				<hr>
-				<p class="mb-0 link-register">
+				<p class="mb-0">
 					Pour ce faire c'est très simple, cliquez
 					<a href="{{ path('register') }}">ici pour vous inscrire</a>
 					c'est gratuit.

@@ -22,7 +22,7 @@ class RegistrationType extends AbstractType
                 [
                     'label' => "Nom",
                     'attr' => [
-                        'placeholder' => "Entrez votre nom..."
+                        'placeholder' => "Entrez votre nom...",
                     ]
                 ]
             )
@@ -52,7 +52,7 @@ class RegistrationType extends AbstractType
                 [
                     'label' => "Mot de passe",
                     'attr' => [
-                        'placeholder' => "Entrez votre mot de passe..."
+                        'placeholder' => "Au moins 6 caractères, 1 lettre majuscule et 1 chiffre..."
                     ]
                 ]
             )

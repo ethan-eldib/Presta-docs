@@ -64,6 +64,7 @@ class AccountController extends AbstractController
 
             $email->sendEmail(
                 $user->getEmail(),
+                'noreply@presta-doc.fr',
                 'emails/register.html.twig',
                 'Bienvenue sur Presta-Doc',
                 [

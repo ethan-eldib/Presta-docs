@@ -11,8 +11,8 @@
         @include btn-app;
     }
 
-    label::after {
-        content: ' *';
+    label.required::before {
+        content: '* ';
         color: red;
     }
 }

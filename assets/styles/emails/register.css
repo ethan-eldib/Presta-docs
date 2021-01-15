@@ -30,6 +30,8 @@ span {
   margin-top: 15px;
   border-radius: 5px;
   box-shadow: 1px 1px 1px black;
+  max-width: 128px;
+  max-height: 128px;
 }
 
 #btn-register-email {

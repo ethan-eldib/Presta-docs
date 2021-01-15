@@ -55,6 +55,7 @@ class ResetPasswordController extends AbstractController
 
                 $email->sendEmail(
                     $user->getEmail(),
+                    'noreply@presta-doc.fr',
                     'emails/reset_password.html.twig',
                     'Réinitialisation du mot de passe',
                     [
