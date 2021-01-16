@@ -47,7 +47,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Regex(pattern="/^(?=.*[a-zA-Z])(?=.*\d).{6,}$/i", message="Le mot de passe doit comporter au moins 6 caractères et inclure au moins une lettre majuscule et un chiffre."
+     * @Assert\Regex(pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/", message="Le mot de passe doit comporter au moins 6 caractères et inclure au moins une lettre majuscule et un chiffre."
      * )
      */
     private $hash;

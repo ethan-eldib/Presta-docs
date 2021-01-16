@@ -1,44 +1,75 @@
 // Style de la barre de navigation
-.navbar {
-  a {
-    color: $textColorPrimary;
-    font-weight: 400;
-    font-size: $smallFontSize;
+.container-header {
 
-    &:hover {
-      color: $colorSecondary;
-      transition: 0.4s ease-in-out;
+  .navbar-collapse {
+    letter-spacing: -2px;
+  }
+
+  .navbar-nav .nav-link {
+    margin-right: 22px;
+  }
+
+  .navbar-brand {
+    margin: 0 auto;
+
+    .logo-presta-doc {
+      max-width: 128px;
+      max-height: 128px;
+      border-radius: 10%;
+      box-shadow: 1px 0px 3px #000000ad;
+
     }
   }
 
-  .navbar-account a {
-    font-size: 1rem;
+  .navbar-nav .dropdown-menu {
+    margin: 0 auto;
+    float: none;
   }
 
-  #hr-divider-navbar {
-    display: none;
-  }
+  .navbar {
+    a {
+      color: $textColorPrimary;
+      font-weight: 400;
+      font-size: $smallFontSize;
 
-  .navbar-toggler-icon {
-    background-image: url("/images/toggle/menu.png");
-  }
+      &:hover {
+        color: $colorSecondary;
+        transition: 0.4s ease-in-out;
+      }
+    }
 
-  button:focus {
-    outline: 4px auto $colorSecondary;
-  }
-
-  @include lg {
     #hr-divider-navbar {
-      display: block;
-      width: 20%;
-      margin-left: 0;
-      border-top: 2px solid $colorSecondary;
+      display: none;
     }
 
-    .nav-link {
-      padding: 0.1rem 1rem;
-      padding-right: 0;
-      padding-left: 0;
+    .navbar-toggler-icon {
+      background-image: url("/images/toggle/menu.png");
+    }
+
+    .navbar-toggler {
+      margin: 0 auto;
+    }
+
+    button:focus {
+      outline: 4px auto $colorSecondary;
+    }
+
+    .fa-user {
+      margin-right: 5px;
+    }
+
+    @include lg {
+      #hr-divider-navbar {
+        display: block;
+        width: 14vh;
+        border-top: 2px solid $colorSecondary;
+      }
+
+      .nav-link {
+        padding: 0.1rem 1rem;
+        padding-right: 0;
+        padding-left: 0;
+      }
     }
   }
 }

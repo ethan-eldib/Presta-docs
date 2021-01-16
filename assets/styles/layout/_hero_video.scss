@@ -66,4 +66,31 @@
 
   }
 
+  @include md {
+    .main-title-hero {
+      h1 {
+        font-size: $smallFontSize;
+        letter-spacing: 9px;
+        margin-top: 10px;
+  
+        #home-title-span {
+          font-size: 4.7rem;
+          letter-spacing: -10px;
+        }
+      }
+    }
+
+    .div-content-hero {
+      width: 100%;
+      .content-hero {
+        font-size: 1.1rem;
+      }
+  
+      .btn-hero {
+        @include btn-app($colorSecondary);
+      }
+  
+    }
+  }
+
 }

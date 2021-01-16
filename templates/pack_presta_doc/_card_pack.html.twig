@@ -11,6 +11,9 @@
 			{{ pack.description|raw }}
 	</div>
 	<a id="link-buy-card" href="{{ path('add_to_cart', { id : pack.id }) }}">
-		<button class="btn-card">ACHETER CE PACK</button>
+		<button class="btn-card">
+			<i class="fas fa-cart-arrow-down 2x mr-2"></i>
+			ACHETER
+		</button>
 	</a>
 </div>

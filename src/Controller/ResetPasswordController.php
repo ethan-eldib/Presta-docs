@@ -25,6 +25,8 @@ class ResetPasswordController extends AbstractController
     }
 
     /**
+     * Permet de réinitialiser son mot de passe en cas d'oublie
+     * 
      * @Route("/mot-de-passe-oublie", name="reset_password")
      */
     public function index(Request $request, EmailService $email): Response
@@ -82,7 +84,7 @@ class ResetPasswordController extends AbstractController
 
 
     /**
-     * Undocumented function
+     * Permet de modifier son mot de passe sur son espace client
      * 
      * @Route("/modifier-mon-mot-de-passe/{token}", name="update_password")
      * 
