@@ -38,7 +38,9 @@ class FoldersType extends AbstractType
                             'mimeTypes' => [
                                 'application/pdf',
                                 'application/msword',
-                                'application/vnd.ms-excel'
+                                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                                'application/vnd.ms-excel',
+                                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
                             ],
                             'mimeTypesMessage' => 'Merci de télecharger un fichier au format PDF, WORD ou EXCEL'
                         ])

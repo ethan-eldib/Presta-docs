@@ -30,7 +30,7 @@
       position: relative;
       bottom: -120px;
       font-size: 18px;
-      z-index: 9999;
+      z-index: 1;
     }
 
     #icon-uploads {
@@ -38,7 +38,7 @@
       position: relative;
       bottom: -82px;
       color: $colorSecondary;
-      z-index: 9999;
+      z-index: 1;
     }
 
     .custom-file-label {
