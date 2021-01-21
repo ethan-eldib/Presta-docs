@@ -1,5 +1,70 @@
 // Style de la page d'accueil
-.section-homepage-informations {
-    margin-top: 250px;
-    max-width: 50%;
+@include lg {
+  .section-homepage-informations {
+    margin-top: 180px !important;
   }
+}
+
+
+.section-homepage-informations {
+  margin-top: 330px;
+  max-width: 95vh;
+
+  .why-me {
+    p {
+      text-align: left !important;
+    }
+  }
+
+  .box-informations {
+    background: linear-gradient(45deg, $colorSecondary, darken($colorSecondary, 20%));
+    box-shadow: 2px 5px 4px #0000008a;
+    border-radius: 5px;
+    margin-top: 125px;
+    padding: 15px;
+
+    .about-me {
+      width: 50vh;
+      margin: 0 auto;
+      text-align: justify;
+    }
+
+    ul {
+      width: 80vh;
+      margin: 0 auto;
+
+      li {
+        list-style: none;
+        color: white;
+      }
+    }
+
+
+    h5,
+    h2,
+    p {
+      color: white;
+      align-self: flex-end;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    .divider-informations {
+      border-top: 1px solid white;
+      width: 20vh;
+      margin: 0 auto;
+      margin-top: 1rem !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .fa-thumbs-up {
+      color: white;
+      font-size: 2rem;
+      margin-right: 15px;
+      padding: 15px 6px;
+      margin-top: 15px;
+    }
+  }
+}

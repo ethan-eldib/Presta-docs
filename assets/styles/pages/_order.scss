@@ -1,8 +1,29 @@
+// Media query
+@include md {
+    .container-order {
+        
+        .billing-addresses,
+        .recap-order {
+            width: auto;
+            margin: 0 auto;
+        }
+
+        .recap-order {
+            background: #0000001c;
+            border-radius: 7px;
+        }
+    }
+}
+
 .container-order {
 
     .logo-pack {
         max-width: 64px;
         max-height: 64px;
+    }
+
+    .bg-alert {
+        @include bg-alert('order-index', $colorSecondary, goldenrod);
     }
 
     #order_addresses {
@@ -19,10 +40,10 @@
             margin-left: -17px;
             cursor: pointer;
         }
-
     }
 
     .btn-order {
         @include btn-app;
     }
+
 }

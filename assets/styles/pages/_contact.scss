@@ -26,9 +26,7 @@
     }
 
     .bg-alert {
-        background-color: $colorSecondary;
-        padding: 50px;
-        margin-bottom: 85px;
+        @include bg-alert('contact');
     
         #divider-contact {
           border-top: 2px solid white;

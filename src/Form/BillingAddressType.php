@@ -65,9 +65,8 @@ class BillingAddressType extends AbstractType
             ])
             ->add('phone', TelType::class, [
                 'label' => 'Votre numéro de téléphone',
-                'required' => false,
                 'attr' => [
-                    'placeholder' => '(facultatif) Indiquez votre n° de téléphone'
+                    'placeholder' => 'Indiquez votre n° de téléphone'
                 ]
             ])
         ;

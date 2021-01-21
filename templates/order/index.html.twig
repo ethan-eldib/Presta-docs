@@ -6,18 +6,35 @@
 
 {% block body %}
 	<div class="container mt-5 container-order">
-		<h2 class="text-center">Je passe ma commande</h2>
+		<div class="alert bg-alert text-center">
+			<h1 class="alert-heading mb-3">Je passe ma commande</h1>
+			<hr id="divider-order-index">
+			<p class="mb-0">
+				Sélectionnez votre adresse de facturation avant de valider votre commande.
+			</p>
+			<p class="mb-0">
+				Vous souhaitez
+				<a href="{{ path('add_billing_address') }}">ajouter</a>
+				une adresse de facturation ?
+			</p>
+		</div>
 		<hr>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 billing-addresses">
 				{% if app.user.addresses|length > 0 %}
 					{% set formHtml %}
 					{{form_start(form, {action:path('order_recap')})}}
-						<b>Choisir une adresse de facturation</b><br>
-						{{form_row(form.addresses)}}
-						<button class="btn-order">
-							Valider ma commande
-						</button>
+					<b>Choisir une adresse de facturation</b><br>
+					{{form_row(form.addresses)}}
+					<div class="d-flex" style="width:30vh">
+						{{form_row(form.cgv)}}
+						<small>
+							J'ai lu et j'accepte <a href="{{ path('cgv') }}">les conditions générales de vente</a> ainsi que les <a href="{{ path('legal_notice') }}">mentions légales</a>.
+						</small>
+					</div>
+					<button class="btn-order mt-3">
+						Valider ma commande
+					</button>
 					{{form_end(form)}}
 					{% endset %}
 
@@ -35,7 +52,7 @@
 					</div>
 				{% endif %}
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 text-center recap-order">
 				<b>Récapitulitif de ma commande</b><br>
 				{% for pack in cart %}
 					<div class="row">
