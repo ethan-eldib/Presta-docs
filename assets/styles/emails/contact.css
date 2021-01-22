@@ -22,7 +22,7 @@ span {
 .border {
   border: 20px solid #7D3157;
   padding: 15px 5px;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -76,6 +76,7 @@ table td {
 
 .content {
   width: 88%;
+  margin-top: 25px;
   margin: 0 auto;
 }
 

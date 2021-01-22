@@ -31,7 +31,7 @@ class EmailService extends AbstractController
         array $variablesToPassToViewTwig = []
     ) {
         $email = (new TemplatedEmail())
-            ->from('noreply@presta-doc.fr')
+            ->from('contact@presta-doc.fr')
             ->to(new Address($toEmail))
             ->subject($subject)
             ->replyTo($replyTo)

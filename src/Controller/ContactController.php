@@ -27,7 +27,7 @@ class ContactController extends AbstractController
             );
 
             $email->sendEmail(
-                'ethan.eldib@gmail.com',
+                'contact@presta-doc.fr',
                 $form->get('email')->getData(),
                 'emails/contact.html.twig',
                 'Demande de contact Presta-Doc',
