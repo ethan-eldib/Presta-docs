@@ -30,7 +30,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * Remove all pack to cart
+     * Supprime tous les packs
      * 
      * @Route("/cart/remove", name="remove_my_cart")
      */
@@ -42,7 +42,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * Delete one pack to cart by id
+     * Supprime un pack du panier par ID
      * 
      * @Route("/cart/delete/{id}", name="delete_to_cart")
      */

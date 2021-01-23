@@ -1,5 +1,5 @@
 {% for label, messages in app.flashes %}
-	<div class="container text-center">
+	<div class="position-alert container text-center">
 		<div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
 			{% for message in messages %}
 				<p>{{ message|raw }}</p>
