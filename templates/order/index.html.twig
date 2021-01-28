@@ -26,12 +26,6 @@
 					{{form_start(form, {action:path('order_recap')})}}
 					<b>Choisir une adresse de facturation</b><br>
 					{{form_row(form.addresses)}}
-					<div class="d-flex" style="width:30vh">
-						{{form_row(form.cgv)}}
-						<small>
-							J'ai lu et j'accepte <a href="{{ path('cgv') }}">les conditions générales de vente</a> ainsi que les <a href="{{ path('legal_notice') }}">mentions légales</a>.
-						</small>
-					</div>
 					<button class="btn-order mt-3">
 						Valider ma commande
 					</button>

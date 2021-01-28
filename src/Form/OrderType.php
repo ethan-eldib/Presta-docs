@@ -23,11 +23,6 @@ class OrderType extends AbstractType
                 'multiple' => false,
                 'expanded' => true
             ])
-            ->add('cgv', CheckboxType::class, [
-                'label' => false,
-                'required' => true,
-                'mapped' => false
-            ])
         ;
     }
 

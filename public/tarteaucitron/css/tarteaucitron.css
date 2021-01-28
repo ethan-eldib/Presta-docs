@@ -625,8 +625,8 @@ div#tarteaucitronServices {
     height: 35px;
     z-index: 99999;
     filter: grayscale(1);
-    bottom: 3px;
-    right: 160px;
+    bottom: -2px;
+    right: 131px;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronManager::before {
@@ -678,11 +678,11 @@ div#tarteaucitronAlertBig:before {
 }
 
 #tarteaucitronAlertSmall #tarteaucitronManager {
-    color: #fff;
+    color: white;
     cursor: pointer;
     display: inline-block;
-    font-size: 11px !important;
-    padding: 8px 10px 8px;
+    font-size: 10px !important;
+    padding: 0px 3px 0px;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronManager:hover {

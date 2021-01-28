@@ -3,6 +3,18 @@
 @include lg {
   .container-header {
 
+    .navbar-collapse {
+      letter-spacing: -2px;
+      background: #ffffff9e;
+      border-radius: 5px;
+      margin: 0px 25%;
+      margin-bottom: 15px;
+
+      a {
+        font-size: 1.1rem !important;
+      }
+    }
+
     .navbar {
       margin-top: 0 !important;
       margin-bottom: -40px !important;
@@ -12,6 +24,10 @@
       position: relative !important;
       right: 20px !important;
       top: 0 !important;
+
+      .is-visible-dropdown {
+        background-color: transparent !important;
+      }
 
       .inscription,
       .connexion {
@@ -123,6 +139,7 @@
       &:hover {
         color: $colorSecondary;
         transition: 0.4s ease-in-out;
+        background: transparent !important;
       }
     }
 

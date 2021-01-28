@@ -77,10 +77,10 @@ class User implements UserInterface
      */
     private $documents;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Folders::class, mappedBy="user")
-     */
-    private $folders;
+    // /**
+    //  * @ORM\OneToMany(targetEntity=Folders::class, mappedBy="user")
+    //  */
+    // private $folders;
 
     public function __construct()
     {
@@ -89,7 +89,7 @@ class User implements UserInterface
         $this->orders = new ArrayCollection();
         $this->userRoles = new ArrayCollection();
         $this->documents = new ArrayCollection();
-        $this->folders = new ArrayCollection();
+        // $this->folders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -293,13 +293,13 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Folders[]
-     */
-    public function getFolders(): Collection
-    {
-        return $this->folders;
-    }
+    // /**
+    //  * @return Collection|Folders[]
+    //  */
+    // public function getFolders(): Collection
+    // {
+    //     return $this->folders;
+    // }
 
     // public function addFolder(Folders $folder): self
     // {
