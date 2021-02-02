@@ -17,7 +17,7 @@
       letter-spacing: 13px;
       font-family: 'Comfortaa', cursive;
       transition: 0.4s ease-in-out;
-      
+
       small {
         color: black;
         letter-spacing: 0px;
@@ -113,34 +113,43 @@
       }
     }
   }
+}
 
-  // Media query
-  @include sm {
+// Media query
+@include sm {
+  .container-card-pack {
 
-    .card {
-      margin-left: 5px;
-      margin-right: 5px;
+    .alert-heading {
+      font-size: 2rem;
+    }
+
+    .bg-alert {
+      padding: 10px;
+    }
+
+    .block-pack .card-content {
       width: 100%;
+      font-size: 1.4rem;
     }
 
-    h1 {
-      font-size: $mediumFontSize;
-    }
-
-    h2 {
-      font-size: $smallFontSize;
-      margin: 0 auto;
+    .block-pack .card {
+      height: 950px !important;
     }
 
     #img-tags-pack-card {
-      max-width: 105px !important;
-      max-height: 105px !important;
-      top: 50px !important;
-      right: -3px !important;
+      max-width: 132px !important;
+      max-height: 132px !important;
+      position: absolute;
+      top: 130px !important;
+      right: -4px !important;
     }
 
-    .card-content {
-      font-size: $xsFontSize;
+    .card-price {
+      font-size: 1.5rem !important;
     }
+
+    .btn-card {
+      font-size: 1.5rem !important;
+  }
   }
 }

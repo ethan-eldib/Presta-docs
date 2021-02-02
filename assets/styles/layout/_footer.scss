@@ -1,23 +1,4 @@
 // Style du pied de page 
-@include lg {
-  .footer-presta-doc {
-    .copyright-area {
-      display: block !important;
-    }
-
-    .footer-menu ul {
-      display: flex;
-      flex-direction: column;
-      margin-top: 35px;
-      margin-bottom: 35px;
-    }
-
-    .footer-menu li {
-      margin-left: 0 !important;
-    }
-  }
-}
-
 .footer-presta-doc {
   background: $colorSecondary;
   position: relative;
@@ -108,4 +89,39 @@
     margin-top: 30px;
     margin-bottom: 30px;
   }
+}
+
+@include lg {
+  .footer-presta-doc {
+    .copyright-area {
+      display: block !important;
+    }
+
+    .footer-menu ul {
+      display: flex;
+      flex-direction: column;
+      margin-top: 35px;
+      margin-bottom: 35px;
+    }
+
+    .footer-menu li {
+      margin-left: 0 !important;
+    }
+  }
+}
+
+@include sm {
+  .footer-presta-doc .footer-icon i {
+    font-size: 55px;
+  }
+
+  .footer-presta-doc span {
+    color: white;
+    font-size: 22px;
+  }
+
+  .footer-presta-doc .footer-menu li a {
+    font-size: 22px;
+  }
+
 }

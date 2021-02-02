@@ -2,7 +2,7 @@
 <html>
 	<head>
 		{# Consentement des cookies (tarteaucitron) #}
-		<script src="/tarteaucitron/tarteaucitron.js"></script>
+		<script src="{{ asset('tarteaucitron/tarteaucitron.js') }}"></script>
 		<script>
 			tarteaucitron.init({
 				"privacyUrl": "https://presta-doc.fr/mentions-legales", /* URL de la page de la politique de vie privée */
@@ -40,6 +40,7 @@
 		<meta property="og:description" content="Gestionnaire administrative indépendante, prestation de service pour les TPE et PME dans le secteur de Gisors en normandie">
 		<meta property="og:url" content="https://presta-doc.fr/">
 		<meta property="og:site_name" content="Presta-Doc">
+		<link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon.png') }}" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
